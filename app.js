@@ -8,7 +8,7 @@ const myTeam   = [];
 
 
 
-// start function use as init at bottom of page
+// starter function, called at bottom of page, allows manager to build team
 function makeTeam () {
     
     inquirer
@@ -16,7 +16,7 @@ function makeTeam () {
             {
                 type: "list",
                 name: "teamRole",
-                message: "What is your role?",
+                message: "Please select an employee role to start.",
                 choices: [
                     "Manager",
                     "Engineer",
@@ -25,7 +25,7 @@ function makeTeam () {
                 ]
             }
         ]).then(response => {
-            switch (response.teamRole) {  // determines next function
+            switch (response.teamRole) {  // determines next function used to gather data
                 
                 case "Manager":
                     makeManager();
@@ -41,12 +41,14 @@ function makeTeam () {
 
                 case "End of team members":
                     console.log(myTeam);
+
+                    // array myTeam is complete at this point to, time to build html
                     render(myTeam);
                     break;
             }
         })
 
-        function makeManager() {
+        function makeManager() {  // manager prompt
             inquirer
                 .prompt([    
                     {
@@ -97,8 +99,8 @@ function makeTeam () {
                           },
                     }  
                 ]).then(response => {
-                    console.log(response);
-    
+                    
+                    // pass manager responses into Manager class (extends Employee), object that comes back is then added to myTeam array 
                     const manager = new Manager(response.mgrName, response.mgrID, response.mgrEmail, response.mgrOffice);
     
                     myTeam.push(manager)
@@ -108,12 +110,12 @@ function makeTeam () {
         }
 
 
-        function makeEngineer() {
+        function makeEngineer() {  // engineer prompt
             inquirer
                 .prompt([
                     {
                         type: "input",
-                        message: "What is your name?",
+                        message: "What the engineer's name?",
                         name: "engName",
                         validate: function(text) {
                             if (text === "") {
@@ -124,7 +126,7 @@ function makeTeam () {
                     },   
                     {
                         type: "input",
-                        message: "What is the employee ID?",
+                        message: "What is their employee ID?",
                         name: "engID",
                         validate: function(text) {
                             if (text === "") {
@@ -135,8 +137,8 @@ function makeTeam () {
                     },   
                     {
                         type: "input",
-                        message: "What is the email?",
-                        name: "Email",
+                        message: "What is their email?",
+                        name: "engEmail",
                         validate: function(value) {
                             var pass = value.match(
                                 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -149,7 +151,7 @@ function makeTeam () {
                     },    
                     {
                         type: "input",
-                        message: "What is the GitHub ID?",
+                        message: "What is their GitHub ID?",
                         name: "engGitHub",
                         validate: function(text) {
                             if (text === "") {
@@ -159,8 +161,8 @@ function makeTeam () {
                           },
                     }  
                 ]).then(response => {
-                    console.log(response);
-    
+                    
+                    // pass engineer responses into Engineer class (extends Employee), object that comes back is then added to myTeam array 
                     const engineer = new Engineer(response.engName, response.engID, response.engEmail, response.engGitHub);
     
                     myTeam.push(engineer)
@@ -169,7 +171,7 @@ function makeTeam () {
                 })
         }    
         
-        function makeIntern() {
+        function makeIntern() {  // intern prompt
             inquirer
                 .prompt([
                     {
@@ -185,7 +187,7 @@ function makeTeam () {
                     },   
                     {
                         type: "input",
-                        message: "What is the employee ID?",
+                        message: "What is their employee ID?",
                         name: "intID",
                         validate: function(text) {
                             if (text === "") {
@@ -196,7 +198,7 @@ function makeTeam () {
                     },   
                     {
                         type: "input",
-                        message: "What is the email?",
+                        message: "What is their email?",
                         name: "intEmail",
                         validate: function(value) {
                             var pass = value.match(
@@ -210,7 +212,7 @@ function makeTeam () {
                     },    
                     {
                         type: "input",
-                        message: "What school did you  they attend?",
+                        message: "What school did they attend?",
                         name: "intSchool",
                         validate: function(text) {
                             if (text === "") {
@@ -220,9 +222,9 @@ function makeTeam () {
                           },
                     }  
                 ]).then(response => {
-                    console.log(response);
-    
-                    const intern = new Engineer(response.intName, response.intID, response.intEmail, response.intSchool);
+                    
+                    // pass  intern responses into Intern class (extends Employee), object that comes back is then added to myTeam array 
+                    const intern = new Intern(response.intName, response.intID, response.intEmail, response.intSchool);
     
                     myTeam.push(intern)
     
@@ -231,14 +233,7 @@ function makeTeam () {
         }               
     
 
-       
-
-
-
 }  // end make team
-
-
-
 
 
 
