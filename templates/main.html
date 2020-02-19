@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+ 
+
     <link rel="stylesheet" href="assets/style.css" type="text/css">
 
     <title>Employee Summary</title>
@@ -18,8 +22,8 @@
     padding: 0;
     margin: 0 auto;
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 140%;
+    font-size: 16px;
+    /* line-height: 140%; */
     /* background-image: url('../assets/images/blue-snow.png'); */
  }
 
@@ -186,30 +190,7 @@ footer{
         <div class="row">
             <div class="col-md-12">
                
-                    <h2>My Team</h2>
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a data-toggle="tab" href="#home">Manager</a></li>
-                      <li><a data-toggle="tab" href="#menu1">Engineers</a></li>
-                      <li><a data-toggle="tab" href="#menu2">Interns</a></li>
-                    </ul>
-                  
-                    <div class="tab-content">
-
-                      <div id="home" class="tab-pane fade in active">                                  
-                        <!--Manager List item goes here-->
-                      </div>
-
-                      <div id="menu1" class="tab-pane fade">
-                        <!--Engineer lists item goes here-->
-                      </div>
-
-                      <div id="menu2" class="tab-pane fade">
-                        <!--Intern list items go here-->
-                      </div>
-
-                    </div>
-                
-                  
+               {{team}}        
 
             </div>   <!-- content column end -->           
         </div>   <!-- content row end --> 

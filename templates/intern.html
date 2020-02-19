@@ -1,5 +1,13 @@
-<li class="list-group-item">Intern {{name}}</li>
-    <li class="list-group-item">ID: {{id}}</li>
-    <li class="list-group-item">Email: <a href="mailto:{{ email }}">{{ email }}}</li>
-    <li class="list-group-item">School: {{school}} </li>
-</ul>  
+<div class="card" style="width: 28rem;">
+    <div class="card-body bg-light ">
+        <div class="card-header  text-white bg-primary p-3">
+            <h3 class="card-title">{{ name }}</h3>
+            <h3 class="card-title"> <i class="fas fa-graduation-cap"></i> {{ role }}</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: {{role}}</li>
+            <li class="list-group-item">Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
+            <li class="list-group-item">School: {{ school }}</li>
+        </ul>
+    </div>   
+  </div>        
