@@ -33,16 +33,12 @@ Manager data is completed first. Then user can add multiple Engeneers and Intern
 ## Special Features
 team.html is dynamically created in output directory. Clean nice ouptut.
 
-Structure:
+### Structure:
 ![alt text](employeegenstructure.png "Structure")
 
-
-
-```
-
+### Sample:
 ![](employeegen.gif)
 
-```
 
 
 ## Credits
