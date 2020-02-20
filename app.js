@@ -7,8 +7,73 @@ const fs       = require("fs");
 const myTeam   = [];
 
 
+// manager builds the team. Start with them first.
+function makeManager() {  // manager prompt
+    inquirer
+        .prompt([    
+            {
+                type: "input",
+                message: "As a Manager, let's build your team. What is your name?",
+                name: "mgrName",
+                validate: function(text) {
+                    if (text === "") {
+                      return 'You must enter a name.';
+                    }     
+                    return true;
+                  },
+            },   
+            {
+                type: "input",
+                message: "What is your employee ID?",
+                name: "mgrID",
+                validate: function(text) {
+                    if (text === "") {
+                      return 'You must enter a employee ID.';
+                    }     
+                    return true;
+                  },
+            },   
+            {
+                type: "input",
+                message: "What is your email?",
+                name: "mgrEmail",
+                validate: function(value) {
+                    var pass = value.match(
+                        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                    );
+                    if (pass) {
+                      return true;
+                    }         
+                    return 'Please enter a email address.';
+                }, 
+            },    
+            {
+                type: "input",
+                message: "What is your office number?",
+                name: "mgrOffice",
+                validate: function(text) {
+                    if (text === "") {
+                      return 'You must enter a office number.';
+                    }     
+                    return true;
+                  },
+            }  
+        ]).then(response => {
+            
+            // pass manager responses into Manager class (extends Employee), object that comes back is then added to myTeam array 
+            const manager = new Manager(response.mgrName, response.mgrID, response.mgrEmail, response.mgrOffice);
 
-// starter function, called at bottom of page, allows manager to build team
+            myTeam.push(manager)
+
+            makeTeam();
+        })
+} // manager end
+
+
+makeManager();
+
+
+// make team run after manager data has been added
 function makeTeam () {
     
     inquirer
@@ -16,9 +81,8 @@ function makeTeam () {
             {
                 type: "list",
                 name: "teamRole",
-                message: "Please select an employee role to start.",
+                message: "Please select an employee role to add a teammate. End to write team.html",
                 choices: [
-                    "Manager",
                     "Engineer",
                     "Intern",
                     "End of team members"
@@ -40,7 +104,7 @@ function makeTeam () {
                     break;
 
                 case "End of team members":
-                    console.log(myTeam);
+                    // console.log(myTeam);
 
                     // array myTeam is complete at this point to, time to build html
                     render(myTeam);
@@ -48,67 +112,7 @@ function makeTeam () {
             }
         })
 
-        function makeManager() {  // manager prompt
-            inquirer
-                .prompt([    
-                    {
-                        type: "input",
-                        message: "What is your name?",
-                        name: "mgrName",
-                        validate: function(text) {
-                            if (text === "") {
-                              return 'You must enter a name.';
-                            }     
-                            return true;
-                          },
-                    },   
-                    {
-                        type: "input",
-                        message: "What is your employee ID?",
-                        name: "mgrID",
-                        validate: function(text) {
-                            if (text === "") {
-                              return 'You must enter a employee ID.';
-                            }     
-                            return true;
-                          },
-                    },   
-                    {
-                        type: "input",
-                        message: "What is your email?",
-                        name: "mgrEmail",
-                        validate: function(value) {
-                            var pass = value.match(
-                                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-                            );
-                            if (pass) {
-                              return true;
-                            }         
-                            return 'Please enter a email address.';
-                        }, 
-                    },    
-                    {
-                        type: "input",
-                        message: "What is your office number?",
-                        name: "mgrOffice",
-                        validate: function(text) {
-                            if (text === "") {
-                              return 'You must enter a office number.';
-                            }     
-                            return true;
-                          },
-                    }  
-                ]).then(response => {
-                    
-                    // pass manager responses into Manager class (extends Employee), object that comes back is then added to myTeam array 
-                    const manager = new Manager(response.mgrName, response.mgrID, response.mgrEmail, response.mgrOffice);
-    
-                    myTeam.push(manager)
-    
-                    makeTeam();
-                })
-        }
-
+      
 
         function makeEngineer() {  // engineer prompt
             inquirer
@@ -237,4 +241,3 @@ function makeTeam () {
 
 
 
-makeTeam();
