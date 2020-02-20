@@ -26,6 +26,7 @@ npm install package.json
 * Email
 * GitHub ID
 * School
+* Office Number
 
 Manager data is completed first. Then user can add multiple Engeneers and Interns. All input data is error checked.  Jest was used for running tests which all passesd. Inquirer is used for collecting input from the user.
 
