@@ -40,7 +40,7 @@ Structure:
 
 ```
 
-![](employeegengif)
+![](employeegen.gif)
 
 ```
 
@@ -49,8 +49,6 @@ Structure:
 Inquirer.js:  <a href="https://github.com/SBoudrias/Inquirer.js" target="_blank">SBoudrias</a>
 
 jestjs.io <a href="https://jestjs.io/" target="_blank">jest</a>
-
-License: <a href="https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba" target="_blank">lukas-h</a>
 
 
 ## Acknowledgments
