@@ -91,10 +91,7 @@ function makeTeam () {
         ]).then(response => {
             switch (response.teamRole) {  // determines next function used to gather data
                 
-                case "Manager":
-                    makeManager();
-                    break;
-
+                
                 case "Engineer":
                     makeEngineer();
                     break;
