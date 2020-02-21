@@ -13,7 +13,7 @@ function makeManager() {  // manager prompt
         .prompt([    
             {
                 type: "input",
-                message: "As a Manager, let's build your team. What is your name?",
+                message: "Manager, let's build your team. What is your name?",
                 name: "mgrName",
                 validate: function(text) {
                     if (text === "") {
